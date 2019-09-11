@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.accenture.rentacar.app.entity.Vehiculo;
 import com.accenture.rentacar.app.service.IVehiculoService;
 
-@Controller
+
 @RestController
 @RequestMapping("/api")
 
@@ -33,6 +33,7 @@ public class VehiculoController {
 	@GetMapping("/vehiculos/(id)")	
 	public Vehiculo buscarPoId( @PathVariable Long id) {
 		return vehiculoService.buscarVehiculoPorId(id);
+		
 		
 		
 	}
@@ -64,6 +65,14 @@ public class VehiculoController {
 	public void borrar () {
 		
 	}
+	
+	@PostMapping("/varios-vehiculos")
+	public List<Vehiculo> guardar (@RequestBody Vehiculo[] vehiculos) {
+		
+		return vehiculoService.guardarVarios(vehiculos);
+		
+	}
+	
 	
 	
 }

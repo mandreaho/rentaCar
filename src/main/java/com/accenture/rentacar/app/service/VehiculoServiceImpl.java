@@ -1,5 +1,6 @@
 package com.accenture.rentacar.app.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ public class VehiculoServiceImpl implements IVehiculoService {
 	}
 	
 	@Override
-	public Vehiculo buscarVehiculoPorId (Vehiculo vehiculo) {
+	public Vehiculo buscarVehiculoPorId (Long id) {
 		
 		return vehiculoDao.findById(id).orElse(null);
 	}
@@ -38,5 +39,21 @@ public class VehiculoServiceImpl implements IVehiculoService {
 		
 		return (List<Vehiculo>) vehiculoDao.findAll();
 	}
+	
+	@Override
+	public List<Vehiculo> guardarVarios (Vehiculo[] vehiculos){
+		
+		List<Vehiculo> retorno = new ArrayList<Vehiculo>();
+		
+		for (Vehiculo vehiculo : vehiculos) {
+			
+			retorno.add(vehiculoDao.save(vehiculo) );
+		}
+			
+			return retorno; 
+			
+		}
+		
+	}
 
-}
+
