@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 public class Vehiculo {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType =IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(name="modelo_auto")
@@ -34,7 +34,7 @@ public class Vehiculo {
 	
 	@PrePersist
 	private void preGuardado() {
-		fechaCreacionRegistro = new Date; 
+		fechaCreacionRegistro = new Date(); 
 	}
 	
 	
